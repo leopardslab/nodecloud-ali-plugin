@@ -1,0 +1,25 @@
+{
+  "name": "nodecloud-alicloud-plugin",
+  "version": "1.0.0",
+  "description": "AliCloud Plugin for Node Core",
+  "main": "index.js",
+  "dependencies": {
+    "@alicloud/pop-core": "^1.7.7",
+    "jest": "^24.9.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cloudlibz/nodecloud-ali-plugin"
+  },
+  "keywords": [
+    "nodecloud",
+    "nodecloud-alicloud",
+    "nodecloud-core"
+  ],
+  "author": "Scorelab",
+  "license": "MIT"
+}
