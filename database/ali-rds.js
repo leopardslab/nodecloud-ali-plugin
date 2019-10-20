@@ -1,6 +1,6 @@
-class SLB {
+class RDS {
   /**
-   * SLB constructor
+   * RDS constructor
    * @constructor
    * @param {object} aliSdk - AliCloud SDK
    * @param {string} accessKeyId - User Access Key ID
@@ -11,20 +11,20 @@ class SLB {
     this._client = new this._aliSDK({
       accessKeyId: accessKeyId,
       accessKeySecret: secretAccessKey,
-      endpoint: 'https://slb.ap-south-1.aliyuncs.com',
-      apiVersion: '2014-05-15'
+      endpoint: 'https://rds.aliyuncs.com',
+      apiVersion: '2014-08-15'
     });
     this._requestOption = {method: 'POST'};
   }
 
   /**
-   * Create a Load Balancer
-   * @create
+   * Create a RDS database instance
+   * @createRDSInstance
    * @param {object} params
    */
-  create(params) {
+  createRDSInstance(params) {
     return new Promise((resolve,reject) => {
-      this._client.request('CreateLoadBalancer', params, this._requestOption).then((result) => {
+      this._client.request('CreateDBInstance', params, this._requestOption).then((result) => {
         console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
@@ -34,13 +34,13 @@ class SLB {
   }
 
   /**
-   * List all Load Balancers
-   * @listLoadBalancers
+   * Create a database in a RDS instance
+   * @createDatabase
    * @param {object} params
    */
-  listLoadBalancers(params) {
+  createDatabase(params) {
     return new Promise((resolve,reject) => {
-      this._client.request('DescribeLoadBalancers', params, this._requestOption).then((result) => {
+      this._client.request('CreateDatabase', params, this._requestOption).then((result) => {
         console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
@@ -50,13 +50,13 @@ class SLB {
   }
 
   /**
-   * List Load Balancer regions
-   * @listRegions
+   * List all RDS Instances
+   * @listRDSInstances
    * @param {object} params
    */
-  listRegions(params) {
+  listRDSInstances(params) {
     return new Promise((resolve,reject) => {
-      this._client.request('DescribeRegions', params, this._requestOption).then((result) => {
+      this._client.request('DescribeDBInstances', params, this._requestOption).then((result) => {
         console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
@@ -66,13 +66,13 @@ class SLB {
   }
 
   /**
-   * List all Tags
-   * @listTags
+   * List all Databases in a RDS instance
+   * @listDatabases
    * @param {object} params
    */
-  listTags(params) {
+  listDatabases(params) {
     return new Promise((resolve,reject) => {
-      this._client.request('DescribeTags', params, this._requestOption).then((result) => {
+      this._client.request('DescribeDatabases', params, this._requestOption).then((result) => {
         console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
@@ -82,13 +82,13 @@ class SLB {
   }
 
   /**
-   * Add tags to a Load Balancer
-   * @addTags
+   * Restart a RDS instance
+   * @restartRDSInstance
    * @param {object} params
    */
-  addTags(params) {
+  restartRDSInstance(params) {
     return new Promise((resolve,reject) => {
-      this._client.request('AddTags', params, this._requestOption).then((result) => {
+      this._client.request('RestartDBInstance', params, this._requestOption).then((result) => {
         console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
@@ -98,13 +98,13 @@ class SLB {
   }
 
   /**
-   * Remove tags from a Load Balaner
-   * @removeTags
+   * Delete a Database in a RDS instance
+   * @deleteDatabase
    * @param {object} params
    */
-  removeTags(params) {
+  deleteDatabase(params) {
     return new Promise((resolve,reject) => {
-      this._client.request('RemoveTags', params, this._requestOption).then((result) => {
+      this._client.request('DeleteDatabase', params, this._requestOption).then((result) => {
         console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
@@ -114,13 +114,13 @@ class SLB {
   }
 
   /**
-   * Delete a Load Balancer
-   * @delete
+   * Delete a RDS Instance
+   * @deleteRDSInstance
    * @param {object} params
    */
-  delete(params) {
+  deleteRDSInstance(params) {
     return new Promise((resolve,reject) => {
-      this._client.request('DeleteLoadBalance', params, this._requestOption).then((result) => {
+      this._client.request('DeleteDBInstance', params, this._requestOption).then((result) => {
         console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
@@ -131,4 +131,4 @@ class SLB {
 
 }
 
-module.exports = SLB;
+module.exports = RDS;

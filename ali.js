@@ -1,5 +1,6 @@
 const ECS = require('./compute/ali-ecs')
 const SLB = require('./networking/ali-slb')
+const RDS = require('./database/ali-rds')
 
 class AliCloud {
 	/**
@@ -16,7 +17,8 @@ class AliCloud {
       getAccessKeyId: () => this._accessKeyId,
       getSecretAccessKey: () => this._secretAccessKey,
       ecs: this.ECS,
-      slb: this.SLB
+      slb: this.SLB,
+      rds: this.RDS
 		};
   }
 
@@ -34,6 +36,14 @@ class AliCloud {
    */
   SLB() {
     return new SLB(this.getSDK(), this.getAccessKeyId(), this.getSecretAccessKey());
+  }
+
+  /**
+   * Database - ApsaraDB for RDS Wrapper
+   * @APSARA
+   */
+  RDS() {
+    return new RDS(this.getSDK(), this.getAccessKeyId(), this.getSecretAccessKey());
   }
 
 }
