@@ -1,4 +1,5 @@
 const ECS = require('./compute/ali-ecs')
+const SLB = require('./networking/ali-slb')
 
 class AliCloud {
 	/**
@@ -14,7 +15,8 @@ class AliCloud {
       getSDK: () => this._aliSDK,
       getAccessKeyId: () => this._accessKeyId,
       getSecretAccessKey: () => this._secretAccessKey,
-      ecs: this.ECS
+      ecs: this.ECS,
+      slb: this.SLB
 		};
   }
 
@@ -24,6 +26,14 @@ class AliCloud {
    */
   ECS() {
     return new ECS(this.getSDK(), this.getAccessKeyId(), this.getSecretAccessKey());
+  }
+
+  /**
+   * Networking - SLB Wrapper
+   * @SLB
+   */
+  SLB() {
+    return new SLB(this.getSDK(), this.getAccessKeyId(), this.getSecretAccessKey());
   }
 
 }

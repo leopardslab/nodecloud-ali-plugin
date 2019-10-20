@@ -8,7 +8,7 @@ class ECS {
    */
   constructor(aliSdk, accessKeyId, secretAccessKey) {
     this._aliSDK = aliSdk;
-    this._client = this._aliSDK({
+    this._client = new this._aliSDK({
       accessKeyId: accessKeyId,
       accessKeySecret: secretAccessKey,
       endpoint: 'https://ecs.ap-south-1.aliyuncs.com',
@@ -19,7 +19,7 @@ class ECS {
 
   /**
    * Create an ECS instance
-   * @createInstance
+   * @create
    * @param {object} params
    */
   create(params) {
@@ -28,7 +28,7 @@ class ECS {
         console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
-        console.log(ex);
+        reject(ex);
       });
     });
   }

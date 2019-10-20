@@ -11,36 +11,20 @@ class Networking {
     this._client = new this._aliSDK({
       accessKeyId: accessKeyId,
       accessKeySecret: secretAccessKey,
-      endpoint: 'https://ecs.ap-south-1.aliyuncs.com',
-      apiVersion: '2014-05-26'
+      endpoint: 'https://slb.ap-south-1.aliyuncs.com',
+      apiVersion: '2014-05-15'
     });
     this._requestOption = {method: 'POST'};
   }
 
   /**
-   * Create an Networking instance
-   * @createInstance
+   * Create a Load Balancer
+   * @create
    * @param {object} params
    */
   create(params) {
     return new Promise((resolve,reject) => {
-      this._client.request('CreateNetworkingInstance', params, this._requestOption).then((result) => {
-        console.log(JSON.stringify(result));
-        resolve(result);
-      }, (ex) => {
-        console.log(ex);
-      });
-    });
-  }
-
-  /**
-   * List all Networking Instances
-   * @listInstances
-   * @param {object} params
-   */
-  listInstances(params) {
-    return new Promise((resolve,reject) => {
-      this._client.request('DescribeNetworkingInstances', params, this._requestOption).then((result) => {
+      this._client.request('CreateLoadBalancer', params, this._requestOption).then((result) => {
         console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
@@ -50,13 +34,13 @@ class Networking {
   }
 
   /**
-   * List all Networking Images
-   * @listImages
+   * List all Load Balancers
+   * @listLoadBalancers
    * @param {object} params
    */
-  listImages(params) {
+  listLoadBalancers(params) {
     return new Promise((resolve,reject) => {
-      this._client.request('DescribeNetworkingImages', params, this._requestOption).then((result) => {
+      this._client.request('DescribeLoadBalancers', params, this._requestOption).then((result) => {
         console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
@@ -66,13 +50,13 @@ class Networking {
   }
 
   /**
-   * List all Networking Instance Types
-   * @listInstanceTypes
+   * List Load Balancer regions
+   * @listRegions
    * @param {object} params
    */
-  listInstanceTypes(params) {
+  listRegions(params) {
     return new Promise((resolve,reject) => {
-      this._client.request('DescribeNetworkingInstanceTypes', params, this._requestOption).then((result) => {
+      this._client.request('DescribeRegions', params, this._requestOption).then((result) => {
         console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
@@ -82,13 +66,13 @@ class Networking {
   }
 
   /**
-   * Start an Networking Instance
-   * @start
+   * List all Tags
+   * @listTags
    * @param {object} params
    */
-  start(params) {
+  listTags(params) {
     return new Promise((resolve,reject) => {
-      this._client.request('StartNetworkingInstance', params, this._requestOption).then((result) => {
+      this._client.request('DescribeTags', params, this._requestOption).then((result) => {
         console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
@@ -98,13 +82,13 @@ class Networking {
   }
 
   /**
-   * Stop an Networking Instance
-   * @stop
+   * Add tags to a Load Balancer
+   * @addTags
    * @param {object} params
    */
-  stop(params) {
+  addTags(params) {
     return new Promise((resolve,reject) => {
-      this._client.request('StopNetworkingInstance', params, this._requestOption).then((result) => {
+      this._client.request('AddTags', params, this._requestOption).then((result) => {
         console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
@@ -114,13 +98,29 @@ class Networking {
   }
 
   /**
-   * Delete an Networking Instance
+   * Remove tags from a Load Balaner
+   * @removeTags
+   * @param {object} params
+   */
+  removeTags(params) {
+    return new Promise((resolve,reject) => {
+      this._client.request('RemoveTags', params, this._requestOption).then((result) => {
+        console.log(JSON.stringify(result));
+        resolve(result);
+      }, (ex) => {
+        reject(ex);
+      });
+    });
+  }
+
+  /**
+   * Delete a Load Balancer
    * @delete
    * @param {object} params
    */
   delete(params) {
     return new Promise((resolve,reject) => {
-      this._client.request('DeleteInstance', params, this._requestOption).then((result) => {
+      this._client.request('DeleteLoadBalance', params, this._requestOption).then((result) => {
         console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
