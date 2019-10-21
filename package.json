@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "@alicloud/pop-core": "^1.7.7",
+    "ali-oss": "^6.1.1",
     "jest": "^24.9.0"
   },
   "devDependencies": {},

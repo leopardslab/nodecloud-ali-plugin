@@ -25,7 +25,6 @@ class RDS {
   createRDSInstance(params) {
     return new Promise((resolve,reject) => {
       this._client.request('CreateDBInstance', params, this._requestOption).then((result) => {
-        console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
         reject(ex);
@@ -41,7 +40,6 @@ class RDS {
   createDatabase(params) {
     return new Promise((resolve,reject) => {
       this._client.request('CreateDatabase', params, this._requestOption).then((result) => {
-        console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
         reject(ex);
@@ -57,7 +55,6 @@ class RDS {
   listRDSInstances(params) {
     return new Promise((resolve,reject) => {
       this._client.request('DescribeDBInstances', params, this._requestOption).then((result) => {
-        console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
         reject(ex);
@@ -73,7 +70,6 @@ class RDS {
   listDatabases(params) {
     return new Promise((resolve,reject) => {
       this._client.request('DescribeDatabases', params, this._requestOption).then((result) => {
-        console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
         reject(ex);
@@ -89,7 +85,6 @@ class RDS {
   restartRDSInstance(params) {
     return new Promise((resolve,reject) => {
       this._client.request('RestartDBInstance', params, this._requestOption).then((result) => {
-        console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
         reject(ex);
@@ -105,7 +100,6 @@ class RDS {
   deleteDatabase(params) {
     return new Promise((resolve,reject) => {
       this._client.request('DeleteDatabase', params, this._requestOption).then((result) => {
-        console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
         reject(ex);
@@ -121,7 +115,6 @@ class RDS {
   deleteRDSInstance(params) {
     return new Promise((resolve,reject) => {
       this._client.request('DeleteDBInstance', params, this._requestOption).then((result) => {
-        console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
         reject(ex);

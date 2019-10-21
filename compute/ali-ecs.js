@@ -25,7 +25,6 @@ class ECS {
   create(params) {
     return new Promise((resolve,reject) => {
       this._client.request('CreateInstance', params, this._requestOption).then((result) => {
-        console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
         reject(ex);
@@ -41,7 +40,6 @@ class ECS {
   listInstances(params) {
     return new Promise((resolve,reject) => {
       this._client.request('DescribeInstances', params, this._requestOption).then((result) => {
-        console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
         reject(ex);
@@ -57,7 +55,6 @@ class ECS {
   listImages(params) {
     return new Promise((resolve,reject) => {
       this._client.request('DescribeImages', params, this._requestOption).then((result) => {
-        console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
         reject(ex);
@@ -73,7 +70,6 @@ class ECS {
   listInstanceTypes(params) {
     return new Promise((resolve,reject) => {
       this._client.request('DescribeInstanceTypes', params, this._requestOption).then((result) => {
-        console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
         reject(ex);
@@ -89,7 +85,6 @@ class ECS {
   start(params) {
     return new Promise((resolve,reject) => {
       this._client.request('StartInstance', params, this._requestOption).then((result) => {
-        console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
         reject(ex);
@@ -105,7 +100,6 @@ class ECS {
   stop(params) {
     return new Promise((resolve,reject) => {
       this._client.request('StopInstance', params, this._requestOption).then((result) => {
-        console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
         reject(ex);
@@ -121,7 +115,6 @@ class ECS {
   delete(params) {
     return new Promise((resolve,reject) => {
       this._client.request('DeleteInstance', params, this._requestOption).then((result) => {
-        console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
         reject(ex);

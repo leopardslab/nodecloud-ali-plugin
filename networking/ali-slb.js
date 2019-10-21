@@ -25,7 +25,6 @@ class SLB {
   create(params) {
     return new Promise((resolve,reject) => {
       this._client.request('CreateLoadBalancer', params, this._requestOption).then((result) => {
-        console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
         reject(ex);
@@ -41,7 +40,6 @@ class SLB {
   listLoadBalancers(params) {
     return new Promise((resolve,reject) => {
       this._client.request('DescribeLoadBalancers', params, this._requestOption).then((result) => {
-        console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
         reject(ex);
@@ -57,7 +55,6 @@ class SLB {
   listRegions(params) {
     return new Promise((resolve,reject) => {
       this._client.request('DescribeRegions', params, this._requestOption).then((result) => {
-        console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
         reject(ex);
@@ -73,7 +70,6 @@ class SLB {
   listTags(params) {
     return new Promise((resolve,reject) => {
       this._client.request('DescribeTags', params, this._requestOption).then((result) => {
-        console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
         reject(ex);
@@ -89,7 +85,6 @@ class SLB {
   addTags(params) {
     return new Promise((resolve,reject) => {
       this._client.request('AddTags', params, this._requestOption).then((result) => {
-        console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
         reject(ex);
@@ -105,7 +100,6 @@ class SLB {
   removeTags(params) {
     return new Promise((resolve,reject) => {
       this._client.request('RemoveTags', params, this._requestOption).then((result) => {
-        console.log(JSON.stringify(result));
         resolve(result);
       }, (ex) => {
         reject(ex);
@@ -120,8 +114,7 @@ class SLB {
    */
   delete(params) {
     return new Promise((resolve,reject) => {
-      this._client.request('DeleteLoadBalance', params, this._requestOption).then((result) => {
-        console.log(JSON.stringify(result));
+      this._client.request('DeleteLoadBalancer', params, this._requestOption).then((result) => {
         resolve(result);
       }, (ex) => {
         reject(ex);

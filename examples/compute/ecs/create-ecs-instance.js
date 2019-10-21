@@ -17,8 +17,8 @@ const params = {
 ecs
   .create(params)
   .then(res => {
-    console.log(`${res}`);
+    console.log(res);
   })
   .catch(err => {
-    console.log(`${err}`);
+    console.log(err);
   });
