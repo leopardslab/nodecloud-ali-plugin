@@ -9,7 +9,7 @@ const ncProviders = nodeCloud.getProviders(optionsProvider);
 const oss = ncProviders.alicloud.oss();
 
 oss
-  .fetchBucketACL('nodecloud-test')
+  .fetchBucketACL("nodecloud-test")
   .then(res => {
     console.log(res);
   })

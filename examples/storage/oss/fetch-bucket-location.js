@@ -9,7 +9,7 @@ const ncProviders = nodeCloud.getProviders(optionsProvider);
 const oss = ncProviders.alicloud.oss();
 
 oss
-  .fetchBucketLocation('nodecloud-test')
+  .fetchBucketLocation("nodecloud-test")
   .then(res => {
     console.log(res);
   })

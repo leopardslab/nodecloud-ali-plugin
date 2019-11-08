@@ -9,10 +9,10 @@ const ncProviders = nodeCloud.getProviders(optionsProvider);
 const rds = ncProviders.alicloud.rds();
 
 const params = {
-  "RegionId": "cn-hangzhou",
-  "DBInstanceId": "rm-6gj713q25625b52gn",
-  "DBName": "test_db"
-}
+  RegionId: "cn-hangzhou",
+  DBInstanceId: "rm-6gj713q25625b52gn",
+  DBName: "test_db"
+};
 
 rds
   .deleteDatabase(params)

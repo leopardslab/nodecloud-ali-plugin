@@ -9,8 +9,8 @@ const ncProviders = nodeCloud.getProviders(optionsProvider);
 const slb = ncProviders.alicloud.slb();
 
 const params = {
-  "RegionId": "ap-south-1"
-}
+  RegionId: "ap-south-1"
+};
 
 slb
   .create(params)

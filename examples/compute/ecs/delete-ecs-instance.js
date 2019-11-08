@@ -9,10 +9,10 @@ const ncProviders = nodeCloud.getProviders(optionsProvider);
 const ecs = ncProviders.alicloud.ecs();
 
 const params = {
-  "RegionId": "ap-south-1",
-  "InstanceId": "i-a2d3bscktuxgibxy1e7h",
-  "Force": true
-}
+  RegionId: "ap-south-1",
+  InstanceId: "i-a2d3bscktuxgibxy1e7h",
+  Force: true
+};
 
 ecs
   .delete(params)

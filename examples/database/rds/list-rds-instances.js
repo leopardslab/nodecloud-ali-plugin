@@ -9,8 +9,8 @@ const ncProviders = nodeCloud.getProviders(optionsProvider);
 const rds = ncProviders.alicloud.rds();
 
 const params = {
-  "RegionId": "ap-south-1"
-}
+  RegionId: "ap-south-1"
+};
 
 rds
   .listRDSInstances(params)

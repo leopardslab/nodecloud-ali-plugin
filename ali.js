@@ -1,10 +1,10 @@
-const ECS = require('./compute/ali-ecs')
-const SLB = require('./networking/ali-slb')
-const RDS = require('./database/ali-rds')
-const OSS = require('./storage/ali-oss')
+const ECS = require("./compute/ali-ecs");
+const SLB = require("./networking/ali-slb");
+const RDS = require("./database/ali-rds");
+const OSS = require("./storage/ali-oss");
 
 class AliCloud {
-	/**
+  /**
    * Expose AliCloud APIs
    * @constructor
    */
@@ -13,9 +13,9 @@ class AliCloud {
     this._accessKeyId = accessKeyId;
     this._secretAccessKey = secretAccessKey;
     this._bucketName = bucketName;
-    this._bucketRegion = bucketRegion
+    this._bucketRegion = bucketRegion;
 
-		return {
+    return {
       getSDK: () => this._aliSDK,
       getAccessKeyId: () => this._accessKeyId,
       getSecretAccessKey: () => this._secretAccessKey,
@@ -25,15 +25,19 @@ class AliCloud {
       slb: this.SLB,
       rds: this.RDS,
       oss: this.OSS
-		};
+    };
   }
 
-	/**
+  /**
    * Compute - ECS Wrapper
    * @ECS
    */
   ECS() {
-    return new ECS(this.getSDK(), this.getAccessKeyId(), this.getSecretAccessKey());
+    return new ECS(
+      this.getSDK(),
+      this.getAccessKeyId(),
+      this.getSecretAccessKey()
+    );
   }
 
   /**
@@ -41,7 +45,11 @@ class AliCloud {
    * @SLB
    */
   SLB() {
-    return new SLB(this.getSDK(), this.getAccessKeyId(), this.getSecretAccessKey());
+    return new SLB(
+      this.getSDK(),
+      this.getAccessKeyId(),
+      this.getSecretAccessKey()
+    );
   }
 
   /**
@@ -49,7 +57,11 @@ class AliCloud {
    * @RDS
    */
   RDS() {
-    return new RDS(this.getSDK(), this.getAccessKeyId(), this.getSecretAccessKey());
+    return new RDS(
+      this.getSDK(),
+      this.getAccessKeyId(),
+      this.getSecretAccessKey()
+    );
   }
 
   /**
@@ -57,9 +69,13 @@ class AliCloud {
    * @OSS
    */
   OSS() {
-    return new OSS(this.getAccessKeyId(), this.getSecretAccessKey(), this.getBucketName(), this.getBucketRegion());
+    return new OSS(
+      this.getAccessKeyId(),
+      this.getSecretAccessKey(),
+      this.getBucketName(),
+      this.getBucketRegion()
+    );
   }
-
 }
 
 module.exports = AliCloud;

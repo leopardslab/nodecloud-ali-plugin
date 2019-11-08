@@ -1,4 +1,4 @@
-const oss = require('ali-oss');
+const oss = require("ali-oss");
 
 class OSS {
   /**
@@ -24,13 +24,16 @@ class OSS {
    * @param {string} name
    */
   create(name) {
-    return new Promise((resolve,reject) => {
-      this._client.putBucket(name).then((result) => {
-        this._client.useBucket(name);
-        resolve(result);
-      }, (ex) => {
-        reject(ex);
-      });
+    return new Promise((resolve, reject) => {
+      this._client.putBucket(name).then(
+        result => {
+          this._client.useBucket(name);
+          resolve(result);
+        },
+        ex => {
+          reject(ex);
+        }
+      );
     });
   }
 
@@ -40,12 +43,15 @@ class OSS {
    * @param {number} count
    */
   listBuckets(count) {
-    return new Promise((resolve,reject) => {
-      this._client.listBuckets({"max-keys": count}).then((result) => {
-        resolve(result);
-      }, (ex) => {
-        reject(ex);
-      });
+    return new Promise((resolve, reject) => {
+      this._client.listBuckets({ "max-keys": count }).then(
+        result => {
+          resolve(result);
+        },
+        ex => {
+          reject(ex);
+        }
+      );
     });
   }
 
@@ -55,12 +61,15 @@ class OSS {
    * @param {string} name
    */
   fetchBucketInfo(name) {
-    return new Promise((resolve,reject) => {
-      this._client.getBucketInfo(name).then((result) => {
-        resolve(result);
-      }, (ex) => {
-        reject(ex);
-      });
+    return new Promise((resolve, reject) => {
+      this._client.getBucketInfo(name).then(
+        result => {
+          resolve(result);
+        },
+        ex => {
+          reject(ex);
+        }
+      );
     });
   }
 
@@ -70,12 +79,15 @@ class OSS {
    * @param {string} name
    */
   fetchBucketLocation(name) {
-    return new Promise((resolve,reject) => {
-      this._client.getBucketLocation(name).then((result) => {
-        resolve(result);
-      }, (ex) => {
-        reject(ex);
-      });
+    return new Promise((resolve, reject) => {
+      this._client.getBucketLocation(name).then(
+        result => {
+          resolve(result);
+        },
+        ex => {
+          reject(ex);
+        }
+      );
     });
   }
 
@@ -85,13 +97,16 @@ class OSS {
    * @param {string} name
    * @param {string} acl
    */
-  setBucketACL(name,acl) {
-    return new Promise((resolve,reject) => {
-      this._client.putBucketACL(name,acl).then((result) => {
-        resolve(result);
-      }, (ex) => {
-        reject(ex);
-      });
+  setBucketACL(name, acl) {
+    return new Promise((resolve, reject) => {
+      this._client.putBucketACL(name, acl).then(
+        result => {
+          resolve(result);
+        },
+        ex => {
+          reject(ex);
+        }
+      );
     });
   }
 
@@ -101,12 +116,15 @@ class OSS {
    * @param {string} name
    */
   fetchBucketACL(name) {
-    return new Promise((resolve,reject) => {
-      this._client.getBucketACL(name).then((result) => {
-        resolve(result);
-      }, (ex) => {
-        reject(ex);
-      });
+    return new Promise((resolve, reject) => {
+      this._client.getBucketACL(name).then(
+        result => {
+          resolve(result);
+        },
+        ex => {
+          reject(ex);
+        }
+      );
     });
   }
 
@@ -116,15 +134,17 @@ class OSS {
    * @param {string} name
    */
   delete(name) {
-    return new Promise((resolve,reject) => {
-      this._client.deleteBucket(name).then((result) => {
-        resolve(result);
-      }, (ex) => {
-        reject(ex);
-      });
+    return new Promise((resolve, reject) => {
+      this._client.deleteBucket(name).then(
+        result => {
+          resolve(result);
+        },
+        ex => {
+          reject(ex);
+        }
+      );
     });
   }
-
 }
 
 module.exports = OSS;

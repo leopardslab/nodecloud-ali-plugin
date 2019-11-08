@@ -11,10 +11,10 @@ class RDS {
     this._client = new this._aliSDK({
       accessKeyId: accessKeyId,
       accessKeySecret: secretAccessKey,
-      endpoint: 'https://rds.aliyuncs.com',
-      apiVersion: '2014-08-15'
+      endpoint: "https://rds.aliyuncs.com",
+      apiVersion: "2014-08-15"
     });
-    this._requestOption = {method: 'POST'};
+    this._requestOption = { method: "POST" };
   }
 
   /**
@@ -23,12 +23,17 @@ class RDS {
    * @param {object} params
    */
   createRDSInstance(params) {
-    return new Promise((resolve,reject) => {
-      this._client.request('CreateDBInstance', params, this._requestOption).then((result) => {
-        resolve(result);
-      }, (ex) => {
-        reject(ex);
-      });
+    return new Promise((resolve, reject) => {
+      this._client
+        .request("CreateDBInstance", params, this._requestOption)
+        .then(
+          result => {
+            resolve(result);
+          },
+          ex => {
+            reject(ex);
+          }
+        );
     });
   }
 
@@ -38,12 +43,15 @@ class RDS {
    * @param {object} params
    */
   createDatabase(params) {
-    return new Promise((resolve,reject) => {
-      this._client.request('CreateDatabase', params, this._requestOption).then((result) => {
-        resolve(result);
-      }, (ex) => {
-        reject(ex);
-      });
+    return new Promise((resolve, reject) => {
+      this._client.request("CreateDatabase", params, this._requestOption).then(
+        result => {
+          resolve(result);
+        },
+        ex => {
+          reject(ex);
+        }
+      );
     });
   }
 
@@ -53,12 +61,17 @@ class RDS {
    * @param {object} params
    */
   listRDSInstances(params) {
-    return new Promise((resolve,reject) => {
-      this._client.request('DescribeDBInstances', params, this._requestOption).then((result) => {
-        resolve(result);
-      }, (ex) => {
-        reject(ex);
-      });
+    return new Promise((resolve, reject) => {
+      this._client
+        .request("DescribeDBInstances", params, this._requestOption)
+        .then(
+          result => {
+            resolve(result);
+          },
+          ex => {
+            reject(ex);
+          }
+        );
     });
   }
 
@@ -68,12 +81,17 @@ class RDS {
    * @param {object} params
    */
   listDatabases(params) {
-    return new Promise((resolve,reject) => {
-      this._client.request('DescribeDatabases', params, this._requestOption).then((result) => {
-        resolve(result);
-      }, (ex) => {
-        reject(ex);
-      });
+    return new Promise((resolve, reject) => {
+      this._client
+        .request("DescribeDatabases", params, this._requestOption)
+        .then(
+          result => {
+            resolve(result);
+          },
+          ex => {
+            reject(ex);
+          }
+        );
     });
   }
 
@@ -83,12 +101,17 @@ class RDS {
    * @param {object} params
    */
   restartRDSInstance(params) {
-    return new Promise((resolve,reject) => {
-      this._client.request('RestartDBInstance', params, this._requestOption).then((result) => {
-        resolve(result);
-      }, (ex) => {
-        reject(ex);
-      });
+    return new Promise((resolve, reject) => {
+      this._client
+        .request("RestartDBInstance", params, this._requestOption)
+        .then(
+          result => {
+            resolve(result);
+          },
+          ex => {
+            reject(ex);
+          }
+        );
     });
   }
 
@@ -98,12 +121,15 @@ class RDS {
    * @param {object} params
    */
   deleteDatabase(params) {
-    return new Promise((resolve,reject) => {
-      this._client.request('DeleteDatabase', params, this._requestOption).then((result) => {
-        resolve(result);
-      }, (ex) => {
-        reject(ex);
-      });
+    return new Promise((resolve, reject) => {
+      this._client.request("DeleteDatabase", params, this._requestOption).then(
+        result => {
+          resolve(result);
+        },
+        ex => {
+          reject(ex);
+        }
+      );
     });
   }
 
@@ -113,15 +139,19 @@ class RDS {
    * @param {object} params
    */
   deleteRDSInstance(params) {
-    return new Promise((resolve,reject) => {
-      this._client.request('DeleteDBInstance', params, this._requestOption).then((result) => {
-        resolve(result);
-      }, (ex) => {
-        reject(ex);
-      });
+    return new Promise((resolve, reject) => {
+      this._client
+        .request("DeleteDBInstance", params, this._requestOption)
+        .then(
+          result => {
+            resolve(result);
+          },
+          ex => {
+            reject(ex);
+          }
+        );
     });
   }
-
 }
 
 module.exports = RDS;

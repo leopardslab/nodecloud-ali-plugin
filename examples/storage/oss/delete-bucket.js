@@ -9,7 +9,7 @@ const ncProviders = nodeCloud.getProviders(optionsProvider);
 const oss = ncProviders.alicloud.oss();
 
 oss
-  .delete('nodecloud-test')
+  .delete("nodecloud-test")
   .then(res => {
     console.log(res);
   })

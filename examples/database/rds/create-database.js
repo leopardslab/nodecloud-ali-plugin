@@ -9,11 +9,11 @@ const ncProviders = nodeCloud.getProviders(optionsProvider);
 const rds = ncProviders.alicloud.rds();
 
 const params = {
-  "RegionId": "ap-south-1",
-  "DBInstanceId": "rm-6gj713q25625b52gn",
-  "DBName": "test_db",
-  "CharacterSetName": "utf8"
-}
+  RegionId: "ap-south-1",
+  DBInstanceId: "rm-6gj713q25625b52gn",
+  DBName: "test_db",
+  CharacterSetName: "utf8"
+};
 
 rds
   .createDatabase(params)
