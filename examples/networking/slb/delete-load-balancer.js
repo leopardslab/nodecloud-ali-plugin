@@ -6,14 +6,15 @@ const optionsProvider = {
 
 const ncProviders = nodeCloud.getProviders(optionsProvider);
 
-const ecs = ncProviders.alicloud.ecs();
+const slb = ncProviders.alicloud.slb();
 
 const params = {
-  RegionId: "ap-south-1"
+  RegionId: "ap-south-1",
+  LoadBalancerId: "lb-6gj9s7y8294yv59udzf69"
 };
 
-ecs
-  .listImages(params)
+slb
+  .delete(params)
   .then(res => {
     console.log(res);
   })

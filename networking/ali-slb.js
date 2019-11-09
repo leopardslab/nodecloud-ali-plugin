@@ -1,6 +1,6 @@
-class ECS {
+class SLB {
   /**
-   * ECS constructor
+   * SLB constructor
    * @constructor
    * @param {object} aliSdk - AliCloud SDK
    * @param {string} accessKeyId - User Access Key ID
@@ -11,39 +11,21 @@ class ECS {
     this._client = new this._aliSDK({
       accessKeyId: accessKeyId,
       accessKeySecret: secretAccessKey,
-      endpoint: "https://ecs.ap-south-1.aliyuncs.com",
-      apiVersion: "2014-05-26"
+      endpoint: "https://slb.ap-south-1.aliyuncs.com",
+      apiVersion: "2014-05-15"
     });
     this._requestOption = { method: "POST" };
   }
 
   /**
-   * Create an ECS instance
+   * Create a Load Balancer
    * @create
    * @param {object} params
    */
   create(params) {
     return new Promise((resolve, reject) => {
-      this._client.request("CreateInstance", params, this._requestOption).then(
-        result => {
-          resolve(result);
-        },
-        ex => {
-          reject(ex);
-        }
-      );
-    });
-  }
-
-  /**
-   * List all ECS Instances
-   * @listInstances
-   * @param {object} params
-   */
-  listInstances(params) {
-    return new Promise((resolve, reject) => {
       this._client
-        .request("DescribeInstances", params, this._requestOption)
+        .request("CreateLoadBalancer", params, this._requestOption)
         .then(
           result => {
             resolve(result);
@@ -56,32 +38,14 @@ class ECS {
   }
 
   /**
-   * List all ECS Images
-   * @listImages
+   * List all Load Balancers
+   * @listLoadBalancers
    * @param {object} params
    */
-  listImages(params) {
-    return new Promise((resolve, reject) => {
-      this._client.request("DescribeImages", params, this._requestOption).then(
-        result => {
-          resolve(result);
-        },
-        ex => {
-          reject(ex);
-        }
-      );
-    });
-  }
-
-  /**
-   * List all ECS Instance Types
-   * @listInstanceTypes
-   * @param {object} params
-   */
-  listInstanceTypes(params) {
+  listLoadBalancers(params) {
     return new Promise((resolve, reject) => {
       this._client
-        .request("DescribeInstanceTypes", params, this._requestOption)
+        .request("DescribeLoadBalancers", params, this._requestOption)
         .then(
           result => {
             resolve(result);
@@ -94,13 +58,13 @@ class ECS {
   }
 
   /**
-   * Start an ECS Instance
-   * @start
+   * List Load Balancer regions
+   * @listRegions
    * @param {object} params
    */
-  start(params) {
+  listRegions(params) {
     return new Promise((resolve, reject) => {
-      this._client.request("StartInstance", params, this._requestOption).then(
+      this._client.request("DescribeRegions", params, this._requestOption).then(
         result => {
           resolve(result);
         },
@@ -112,13 +76,13 @@ class ECS {
   }
 
   /**
-   * Stop an ECS Instance
-   * @stop
+   * List all Tags
+   * @listTags
    * @param {object} params
    */
-  stop(params) {
+  listTags(params) {
     return new Promise((resolve, reject) => {
-      this._client.request("StopInstance", params, this._requestOption).then(
+      this._client.request("DescribeTags", params, this._requestOption).then(
         result => {
           resolve(result);
         },
@@ -130,22 +94,60 @@ class ECS {
   }
 
   /**
-   * Delete an ECS Instance
+   * Add tags to a Load Balancer
+   * @addTags
+   * @param {object} params
+   */
+  addTags(params) {
+    return new Promise((resolve, reject) => {
+      this._client.request("AddTags", params, this._requestOption).then(
+        result => {
+          resolve(result);
+        },
+        ex => {
+          reject(ex);
+        }
+      );
+    });
+  }
+
+  /**
+   * Remove tags from a Load Balaner
+   * @removeTags
+   * @param {object} params
+   */
+  removeTags(params) {
+    return new Promise((resolve, reject) => {
+      this._client.request("RemoveTags", params, this._requestOption).then(
+        result => {
+          resolve(result);
+        },
+        ex => {
+          reject(ex);
+        }
+      );
+    });
+  }
+
+  /**
+   * Delete a Load Balancer
    * @delete
    * @param {object} params
    */
   delete(params) {
     return new Promise((resolve, reject) => {
-      this._client.request("DeleteInstance", params, this._requestOption).then(
-        result => {
-          resolve(result);
-        },
-        ex => {
-          reject(ex);
-        }
-      );
+      this._client
+        .request("DeleteLoadBalancer", params, this._requestOption)
+        .then(
+          result => {
+            resolve(result);
+          },
+          ex => {
+            reject(ex);
+          }
+        );
     });
   }
 }
 
-module.exports = ECS;
+module.exports = SLB;

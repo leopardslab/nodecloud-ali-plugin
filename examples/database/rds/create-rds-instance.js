@@ -6,15 +6,21 @@ const optionsProvider = {
 
 const ncProviders = nodeCloud.getProviders(optionsProvider);
 
-const ecs = ncProviders.alicloud.ecs();
+const rds = ncProviders.alicloud.rds();
 
 const params = {
   RegionId: "ap-south-1",
-  InstanceId: "i-a2d3bscktuxgibxy1e7h"
+  Engine: "MySQL",
+  EngineVersion: "5.5",
+  DBInstanceClass: "rds.mysql.s1.small",
+  DBInstanceStorage: 5,
+  DBInstanceNetType: "Internet",
+  SecurityIPList: "10.23.12.27/24",
+  PayType: "Postpaid"
 };
 
-ecs
-  .stop(params)
+rds
+  .createRDSInstance(params)
   .then(res => {
     console.log(res);
   })

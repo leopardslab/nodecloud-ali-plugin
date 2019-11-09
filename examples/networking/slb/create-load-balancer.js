@@ -6,14 +6,14 @@ const optionsProvider = {
 
 const ncProviders = nodeCloud.getProviders(optionsProvider);
 
-const ecs = ncProviders.alicloud.ecs();
+const slb = ncProviders.alicloud.slb();
 
 const params = {
   RegionId: "ap-south-1"
 };
 
-ecs
-  .listImages(params)
+slb
+  .create(params)
   .then(res => {
     console.log(res);
   })

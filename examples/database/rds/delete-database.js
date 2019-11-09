@@ -6,14 +6,16 @@ const optionsProvider = {
 
 const ncProviders = nodeCloud.getProviders(optionsProvider);
 
-const ecs = ncProviders.alicloud.ecs();
+const rds = ncProviders.alicloud.rds();
 
 const params = {
-  RegionId: "ap-south-1"
+  RegionId: "cn-hangzhou",
+  DBInstanceId: "rm-6gj713q25625b52gn",
+  DBName: "test_db"
 };
 
-ecs
-  .listImages(params)
+rds
+  .deleteDatabase(params)
   .then(res => {
     console.log(res);
   })

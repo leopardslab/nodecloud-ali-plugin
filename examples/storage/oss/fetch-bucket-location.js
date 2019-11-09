@@ -6,17 +6,13 @@ const optionsProvider = {
 
 const ncProviders = nodeCloud.getProviders(optionsProvider);
 
-const ecs = ncProviders.alicloud.ecs();
+const oss = ncProviders.alicloud.oss();
 
-const params = {
-  RegionId: "ap-south-1"
-};
-
-ecs
-  .listImages(params)
+oss
+  .fetchBucketLocation("nodecloud-test")
   .then(res => {
     console.log(res);
   })
   .catch(err => {
-    console.log(err);
+    console.log(`${err}`);
   });

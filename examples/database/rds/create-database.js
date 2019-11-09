@@ -6,14 +6,17 @@ const optionsProvider = {
 
 const ncProviders = nodeCloud.getProviders(optionsProvider);
 
-const ecs = ncProviders.alicloud.ecs();
+const rds = ncProviders.alicloud.rds();
 
 const params = {
-  RegionId: "ap-south-1"
+  RegionId: "ap-south-1",
+  DBInstanceId: "rm-6gj713q25625b52gn",
+  DBName: "test_db",
+  CharacterSetName: "utf8"
 };
 
-ecs
-  .listImages(params)
+rds
+  .createDatabase(params)
   .then(res => {
     console.log(res);
   })
