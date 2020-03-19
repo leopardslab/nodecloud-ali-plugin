@@ -51,7 +51,11 @@ module.exports = providers;
 $ git clone https://github.com/cloudlibz/nodecloud-ali-plugin
 $ cd nodecloud-ali-plugin
 $ npm link
-$ git clone https://github.com/cloudliz/nodecloud
-$ cd nodecloud
+$ cd .. && mkdir nodecloud-dev && cd nodecloud-dev
 $ npm link nodecloud-ali-plugin
+$ cd .. && git clone https://github.com/cloudliz/nodecloud
+$ cd nodecloud
+$ npm link
+$ cd nodecloud-dev
+$ npm link nodecloud
 ```
