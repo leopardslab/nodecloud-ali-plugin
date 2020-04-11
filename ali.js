@@ -2,6 +2,7 @@ const ECS = require("./compute/ali-ecs");
 const SLB = require("./networking/ali-slb");
 const RDS = require("./database/ali-rds");
 const OSS = require("./storage/ali-oss");
+const ECI = require("./compute/ali-eci");
 
 class AliCloud {
   /**
@@ -24,7 +25,8 @@ class AliCloud {
       ecs: this.ECS,
       slb: this.SLB,
       rds: this.RDS,
-      oss: this.OSS
+      oss: this.OSS,
+      eci: this.ECI
     };
   }
 
@@ -34,6 +36,18 @@ class AliCloud {
    */
   ECS() {
     return new ECS(
+      this.getSDK(),
+      this.getAccessKeyId(),
+      this.getSecretAccessKey()
+    );
+  }
+
+  /**
+   * Compute - ECI Wrapper
+   * @ECI
+   */
+  ECI() {
+    return new ECI(
       this.getSDK(),
       this.getAccessKeyId(),
       this.getSecretAccessKey()
